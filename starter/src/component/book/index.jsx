@@ -34,12 +34,14 @@ const Book = ({ book, updateBook }) => {
             <option value="read" selected={book.shelf === READ}>
               Read
             </option>
-            <option value="none" selected={!book.shelf}>None</option>
+            <option value="none" selected={!book.shelf}>
+              None
+            </option>
           </select>
         </div>
       </div>
       <div className="book-title">{book.title}</div>
-      <div className="book-authors">{book.author}</div>
+      <div className="book-authors">{book.authors}</div>
     </div>
   );
 };

@@ -24,6 +24,14 @@ To get started developing right away:
 └── src
     ├── App.css # Styles for your app. Feel free to customize this as you desire.
     ├── App.js # This is the root of your app. Contains static HTML right now.
+    ├── component # This will centralize your compenent in project
+    │   ├── book
+    │           └── index.jsx
+    │   ├── book-shelf
+    │            └── index.jsx
+    │
+    ├── constant 
+    │       ├── index.jsx
     ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
     ├── icons # Helpful images for your app. Use at your discretion.
@@ -35,6 +43,9 @@ To get started developing right away:
 ```
 
 Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
+## Component
+
+To simplify your development process, we've provided a component for you to develop against. The provided folder [`component`] contains the component you will need to perform necessary operations on designing UI:
 
 ## Backend Server
 
