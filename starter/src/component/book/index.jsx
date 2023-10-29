@@ -1,6 +1,23 @@
 import { CURRENTLY_READING, READ, WANT_TO_READ } from "../../constant";
+import { get } from "../../BooksAPI";
+import { useEffect, useState } from "react";
+const Book = ({ id, updateBook }) => {
+  const [book, setBook] = useState();
+  async function getBook(bookId) {
+    return await get(bookId);
+  }
+  useEffect(() => {
+    let ignore = false;
+    if (!ignore) {
+      getBook(id).then((value) => {
+        setBook(value);
+      });
+    }
+    return () => {
+      ignore = true;
+    };
+  }, [setBook]);
 
-const Book = ({ book, updateBook }) => {
   return (
     <div className="book">
       <div className="book-top">
@@ -10,7 +27,8 @@ const Book = ({ book, updateBook }) => {
             width: 128,
             height: 193,
             backgroundImage:
-              book.imageLinks?.thumbnail && `url(${book.imageLinks.thumbnail})`,
+              book?.imageLinks?.thumbnail &&
+              `url(${book.imageLinks.thumbnail})`,
           }}
         ></div>
         <div className="book-shelf-changer">
@@ -24,24 +42,24 @@ const Book = ({ book, updateBook }) => {
             </option>
             <option
               value="currentlyReading"
-              selected={book.shelf === CURRENTLY_READING}
+              selected={book?.shelf === CURRENTLY_READING}
             >
               Currently Reading
             </option>
-            <option value="wantToRead" selected={book.shelf === WANT_TO_READ}>
+            <option value="wantToRead" selected={book?.shelf === WANT_TO_READ}>
               Want to Read
             </option>
-            <option value="read" selected={book.shelf === READ}>
+            <option value="read" selected={book?.shelf === READ}>
               Read
             </option>
-            <option value="none" selected={!book.shelf}>
+            <option value="none" selected={book?.shelf === "none"}>
               None
             </option>
           </select>
         </div>
       </div>
-      <div className="book-title">{book.title}</div>
-      <div className="book-authors">{book.authors}</div>
+      <div className="book-title">{book?.title}</div>
+      <div className="book-authors">{book?.authors}</div>
     </div>
   );
 };

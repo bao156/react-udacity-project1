@@ -30,7 +30,7 @@ const SearchingBookPage = (props) => {
             searchBooks.map((book) => {
               return (
                 <li key={book.id}>
-                  <Book book={book} updateBook={props.updateBook} />
+                  <Book id={book.id} updateBook={props.updateBook} />
                 </li>
               );
             })}
