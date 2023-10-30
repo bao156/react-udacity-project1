@@ -15,7 +15,8 @@ const Book = ({ id, updateBook }) => {
     return () => {
       ignore = true;
     };
-  }, [setBook, id]);
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setBook]);
 
   return (
     <div className="book">
@@ -35,7 +36,7 @@ const Book = ({ id, updateBook }) => {
             onChange={(e) => {
               updateBook(book, e.target.value);
             }}
-            value={book?.shelf}
+            value={book?.shelf || "none"}
           >
             <option value="move" disabled>
               Move to...
