@@ -1,4 +1,3 @@
-import { CURRENTLY_READING, READ, WANT_TO_READ } from "../../constant";
 import { get } from "../../BooksAPI";
 import { useEffect, useState } from "react";
 const Book = ({ id, updateBook }) => {
@@ -16,7 +15,7 @@ const Book = ({ id, updateBook }) => {
     return () => {
       ignore = true;
     };
-  }, [setBook]);
+  }, [setBook, id]);
 
   return (
     <div className="book">
@@ -36,25 +35,15 @@ const Book = ({ id, updateBook }) => {
             onChange={(e) => {
               updateBook(book, e.target.value);
             }}
+            value={book?.shelf}
           >
-            <option value="none" disabled>
+            <option value="move" disabled>
               Move to...
             </option>
-            <option
-              value="currentlyReading"
-              selected={book?.shelf === CURRENTLY_READING}
-            >
-              Currently Reading
-            </option>
-            <option value="wantToRead" selected={book?.shelf === WANT_TO_READ}>
-              Want to Read
-            </option>
-            <option value="read" selected={book?.shelf === READ}>
-              Read
-            </option>
-            <option value="none" selected={book?.shelf === "none"}>
-              None
-            </option>
+            <option value="currentlyReading">Currently Reading</option>
+            <option value="wantToRead">Want to Read</option>
+            <option value="read">Read</option>
+            <option value="none">None</option>
           </select>
         </div>
       </div>
